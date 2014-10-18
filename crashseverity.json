@@ -1,0 +1,28 @@
+[
+ {
+    "Year":1997,
+    "Unknown":0,
+    "None":21,
+    "Possible":377,
+    "Evident":451,
+    "Disabling":145,
+    "NonFatal":994,
+    "Fatal":29,
+    "Total":1.023,
+    "CumTotal":1.023
+ },
+{"Year":1998,"Unknown":0,"None":17,"Possible":370,"Evident":530,"Disabling":148,"NonFatal":1065,"Fatal":40,"Total":1.105,"CumTotal":2.128},
+{"Year":1999,"Unknown":0,"None":12,"Possible":387,"Evident":506,"Disabling":177,"NonFatal":1082,"Fatal":27,"Total":1.109,"CumTotal":3.237},
+{"Year":2000,"Unknown":8,"None":46,"Possible":353,"Evident":397,"Disabling":80,"NonFatal":884,"Fatal":21,"Total":905,"CumTotal":4.142},
+{"Year":2001,"Unknown":3,"None":55,"Possible":364,"Evident":436,"Disabling":56,"NonFatal":914,"Fatal":23,"Total":937,"CumTotal":5.079},
+{"Year":2002,"Unknown":6,"None":84,"Possible":336,"Evident":380,"Disabling":73,"NonFatal":879,"Fatal":16,"Total":895,"CumTotal":5.974},
+{"Year":2003,"Unknown":10,"None":82,"Possible":352,"Evident":389,"Disabling":63,"NonFatal":896,"Fatal":18,"Total":914,"CumTotal":6.888},
+{"Year":2004,"Unknown":5,"None":99,"Possible":357,"Evident":414,"Disabling":58,"NonFatal":933,"Fatal":26,"Total":959,"CumTotal":7.847},
+{"Year":2005,"Unknown":6,"None":75,"Possible":323,"Evident":448,"Disabling":64,"NonFatal":916,"Fatal":34,"Total":950,"CumTotal":8.797},
+{"Year":2006,"Unknown":9,"None":98,"Possible":379,"Evident":411,"Disabling":56,"NonFatal":953,"Fatal":20,"Total":973,"CumTotal":9.770},
+{"Year":2007,"Unknown":7,"None":117,"Possible":374,"Evident":445,"Disabling":70,"NonFatal":1013,"Fatal":17,"Total":1.030,"CumTotal":10.800},
+{"Year":2008,"Unknown":2,"None":105,"Possible":414,"Evident":441,"Disabling":50,"NonFatal":1012,"Fatal":30,"Total":1.042,"CumTotal":11.842},
+{"Year":2009,"Unknown":4,"None":69,"Possible":333,"Evident":363,"Disabling":45,"NonFatal":814,"Fatal":15,"Total":829,"CumTotal":12.671},
+{"Year":2010,"Unknown":8,"None":105,"Possible":341,"Evident":446,"Disabling":43,"NonFatal":943,"Fatal":23,"Total":966,"CumTotal":13.637},
+{"Year":2011,"Unknown":11,"None":121,"Possible":405,"Evident":410,"Disabling":59,"NonFatal":1006,"Fatal":22,"Total":1.028,"CumTotal":14.665},
+{"Year":2012,"Unknown":5,"None":107,"Possible":428,"Evident":418,"Disabling":39,"NonFatal":997,"Fatal":27,"Total":1.024,"CumTotal":15.689}]

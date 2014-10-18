@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Map[]>
+<Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" background-color="#ffffff" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
+
+<Parameters>
+  <Parameter name="bounds">-85.4736,31.8402,-72.9053,38.8568</Parameter>
+  <Parameter name="center">-79.585,35.6037,5</Parameter>
+  <Parameter name="format">png</Parameter>
+  <Parameter name="interactivity_layer">routes</Parameter>
+  <Parameter name="interactivity_fields">COUNTY</Parameter>
+  <Parameter name="minzoom">0</Parameter>
+  <Parameter name="maxzoom">22</Parameter>
+  <Parameter name="name"><![CDATA[Bike Routes NC]]></Parameter>
+  <Parameter name="template"><![CDATA[{{#__location__}}{{/__location__}}{{#__teaser__}}{{COUNTY}}{{/__teaser__}}{{#__full__}}{{/__full__}}]]></Parameter>
+</Parameters>
+
+
+<Style name="countries" filter-mode="first" >
+  <Rule>
+    <PolygonSymbolizer fill="#ffffff" />
+  </Rule>
+</Style>
+<Style name="countries-outline" filter-mode="first" >
+  <Rule>
+    <LineSymbolizer stroke="#85c5d3" stroke-width="2" stroke-linejoin="round" />
+  </Rule>
+</Style>
+<Layer name="countries"
+  status="off"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>countries-outline</StyleName>
+    <StyleName>countries</StyleName>
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/currine/Documents/MapBox/project/ncbikeroutes/layers/countries/82945364-10m-admin-0-countries.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="states" filter-mode="first" >
+</Style>
+<Style name="states-outline" filter-mode="first" >
+  <Rule>
+    <Filter>([ISO] = 'USA')</Filter>
+    <LineSymbolizer stroke="#b8dee6" stroke-width="1" />
+  </Rule>
+</Style>
+<Layer name="states"
+  status="off"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>states-outline</StyleName>
+    <StyleName>states</StyleName>
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/currine/Documents/MapBox/project/ncbikeroutes/layers/states/c52808e9-10m-admin-1-states-provinces-shp.shp]]></Parameter>
+       <Parameter name="id"><![CDATA[states]]></Parameter>
+       <Parameter name="project"><![CDATA[ncbikeroutes]]></Parameter>
+       <Parameter name="srs"><![CDATA[]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="ncblkgrp" filter-mode="first" >
+</Style>
+<Style name="ncblkgrp-outline" filter-mode="first" >
+  <Rule>
+    <LineSymbolizer stroke="#cac7c7" stroke-width="0.3" />
+  </Rule>
+</Style>
+<Layer name="ncblkgrp"
+  status="off"
+  srs="+proj=longlat +ellps=GRS80 +no_defs">
+    <StyleName>ncblkgrp-outline</StyleName>
+    <StyleName>ncblkgrp</StyleName>
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/currine/Documents/MapBox/project/ncbikeroutes/layers/ncblkgrp/ncblkgrp.shp]]></Parameter>
+       <Parameter name="id"><![CDATA[ncblkgrp]]></Parameter>
+       <Parameter name="project"><![CDATA[ncbikeroutes]]></Parameter>
+       <Parameter name="srs"><![CDATA[]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="routes" filter-mode="first" >
+</Style>
+<Style name="routes-outline" filter-mode="first" >
+  <Rule>
+    <LineSymbolizer stroke="#884455" stroke-width="1" />
+  </Rule>
+</Style>
+<Layer name="routes"
+  srs="+proj=lcc +lat_1=34.33333333333334 +lat_2=36.16666666666666 +lat_0=33.75 +lon_0=-79 +x_0=609601.22 +y_0=0 +datum=NAD83 +units=m +no_defs">
+    <StyleName>routes-outline</StyleName>
+    <StyleName>routes</StyleName>
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/currine/Documents/MapBox/project/ncbikeroutes/layers/routes/BikeRoutes.shp]]></Parameter>
+       <Parameter name="id"><![CDATA[routes]]></Parameter>
+       <Parameter name="project"><![CDATA[ncbikeroutes]]></Parameter>
+       <Parameter name="srs"><![CDATA[]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="populated" filter-mode="first" >
+  <Rule>
+    <Filter>([ADM1NAME] = 'North Carolina')</Filter>
+    <MarkersSymbolizer fill="#000000" width="4" />
+  </Rule>
+</Style>
+<Layer name="populated"
+  status="off"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>populated</StyleName>
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/currine/Documents/MapBox/project/ncbikeroutes/layers/populated/62f0c837-10m-populated-places.shp]]></Parameter>
+       <Parameter name="id"><![CDATA[populated]]></Parameter>
+       <Parameter name="project"><![CDATA[ncbikeroutes]]></Parameter>
+       <Parameter name="srs"><![CDATA[]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="unc" filter-mode="first" >
+  <Rule>
+    <LineSymbolizer stroke="#000000" />
+  </Rule>
+</Style>
+<Layer name="unc"
+  srs="+proj=lcc +lat_1=34.33333333333334 +lat_2=36.16666666666666 +lat_0=33.75 +lon_0=-79 +x_0=609601.2199999997 +y_0=0 +datum=NAD83 +units=us-ft +no_defs">
+    <StyleName>unc</StyleName>
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/currine/Documents/MapBox/project/ncbikeroutes/layers/unc/UNC_Bldg_2014.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
