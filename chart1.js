@@ -3,6 +3,7 @@
 var years =[]
 var nonfatal = []
 var fatal =[]
+var total =[]
 
 //build chart
 $( document ).ready(function() {
@@ -27,14 +28,18 @@ function parseData(data){
         years.push(dataObj[i].Year);
         nonfatal.push(dataObj[i].NonFatal);
         fatal.push(dataObj[i].Fatal);
+        total.push(dataObj[i].NonFatal + dataObj[i].Fatal);
     }   
-    makeChart1();        
+    makeChart1();
 }
 
 
 
 function makeChart1(){
-    $('#container1').highcharts({
+    Highcharts.setOptions({
+        colors: ['#F03B20','#1B1634']
+    });
+    $('#highchart1').highcharts({
         chart: {
             type: 'area'
         },
@@ -53,22 +58,17 @@ function makeChart1(){
         },
         yAxis: {
             title: {
-                text: 'Cyclists'
+                text: 'Accidents'
             },
             labels: {
 
             }
         },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
         tooltip: {
+            crosshairs: true,
             headerFormat: '<span style="font-size:12px"><b>{point.key}</b></span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
+                '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>', 
             footerFormat: '</table>',
             shared: true,
             useHTML: true

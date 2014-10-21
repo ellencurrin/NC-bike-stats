@@ -1,5 +1,0 @@
-stats = open("Documents/JOMC586/project3/crashdata-city.csv")
-
-lines= stats.readlines()
-
-print lines
