@@ -1,11 +1,10 @@
 
-//use ajax to auto-load these variables with data...
+//HIGHCHARTS JAVASCRIPT
 var years =[]
 var nonfatal = []
 var fatal =[]
 var total =[]
 
-//build chart
 $( document ).ready(function() {
     loadData();
 });

@@ -4,27 +4,26 @@
 <head>
     <title>Project 3</title>
 
-<!-- Bootstrap core CSS -->
+<!-- Bootstrap-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-<!-- my CSS -->
-    <link href="css/theme.css" rel="stylesheet">
 <!-- jQuery library (served from Google) -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <!--highcharts-->
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
-    <script src="chart1.js"></script>
 <!--table-->
     <script src="http://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
-    <link src="http://cdn.datatables.net/1.10.3/css/jquery.dataTables.css"></link>
+    <link src="tablestyle.css">
     <script src="http://cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.js"></script>
     <link src="http://cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.css"></link>
 <!-- cartobd-->
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css"/>
     <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
-
+<!-- my CSS -->
+    <link href="css/theme.css" rel="stylesheet">
+<!-- my JS-->
+    <script src="my.js"></script>
     
 
 </head>
@@ -33,25 +32,37 @@
     
 <div id="container">
     <div class="col-md-12">
-        <h1>Heading</h1>
-    </div>
-    <div class="col-md-12">
-        <h3>Insert map iframe here</h3>
-        <div id="map" style="height: 400px; width: 100%"></div>
+        <h1>Bike Safety in North Carolina</h1>
     </div>
     <div class="col-md-8">
-        <h1>Insert chart here</h1>
+        <h3>NC Bike Accidents 1997-2012</h3>
         <div id="highchart1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        <p class="source">Source: data.gov</p>
     </div>
     <div class="col-md-4">
-        <h1>Insert Timeline here</h1>
+        <h3>Timeline of Legislation</h3>
+        <ul id="timeline"></ul>
+        <p class="source">Source: NCDOT </p>
     </div>
     <div class="col-md-12">
-        <h1>Insert Table here</h1>
+        <div class="row">
+            <h3>Geography of Accidents and Fatalities, 1997-2012</h3>
+            <span class="col-md-8 mapIntro">This map displays the location of NC bike accidents (aggregated by municipality) between 1997 and 2012 in relation to the location of the state's designated bike routes. Use the "Visible Layers" button within the map to toggle the bikepath shapefile on and off to get a clearer view of the data. Use the red and orange tabs at the top to explore total accidents and fatal accidents. Is there any relation between the existance of bike routes and accidents? What about bike routes and fatatlities?</span>
+            <span class="col-md-4 noSpace">   </span>
+            <span class="col-md-12 noSpace">    
+                    <button class="tab fatal" onclick="map2()">Percent Fatalities</button>
+                    <button class="tab total" onclick="map1()">Total accidents</button>
+            </span>
+        </div>
+        <div id="map" style="height: 400px; width: 100%"></div>
+        <p class="source">Source: NC ONE Map and data.gov</p>
+    </div>
+    <div class="col-md-12" id=hideTable>
+        <h3>Crash Data by City, 1997-2012</h3>
         <table id="dataTable" class="display" cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th>City</th>
+                <th></th>
                 <th>1997</th>
                 <th>1998</th>
                 <th>1999</th>
@@ -75,7 +86,7 @@
  
         <tfoot>
             <tr>
-                <th>City</th>
+                <th></th>
                 <th>1997</th>
                 <th>1998</th>
                 <th>1999</th>
@@ -99,79 +110,6 @@
     </div>
 </div>
 
-
-<script>
-//CARTO.DB JAVASCRIPT
-  function main() {
-    cartodb.createVis('map', 'http://ellencurrin.cartodb.com/api/v2/viz/ca8f065e-54cf-11e4-a916-0e9d821ea90d/viz.json', {
-        shareable: true,
-        title: false,
-        description: false,
-        search: true,
-        tiles_loader: true,
-        center_lat: 35.392405,
-        center_lon: -79.528719,
-        zoom: 7
-    })
-    .done(function(vis, layers) {
-      // layer 0 is the base layer, layer 1 is cartodb layer
-      // setInteraction is disabled by default
-      layers[1].setInteraction(true);
-      layers[1].on('featureOver', function(e, pos, latlng, data) {
-        cartodb.log.log(e, pos, latlng, data);
-      });
-
-      // you can get the native map to work with it
-      // depending if you use google maps or leaflet
-      map = vis.getNativeMap();
-
-      // now, perform any operations you need
-      // map.setZoom(3)
-      // map.setCenter(new google.maps.Latlng(...))
-    })
-    .error(function(err) {
-      console.log(err);
-    });
-  }
-
-  window.onload = main;
-
-
-//DATATABLE JAVASCRIPT
-var dataSet =[]
-//build chart
-$( document ).ready(function() {
-    makeTable();
-});
-    
-function makeTable(dataSet) {   
-    $('#dataTable').dataTable( {
-        "ajax": "crashcity(1).json",
-        "columns": [
-            { "data": "City" },
-            { "data": "1997" },
-            { "data": "1998" },
-            { "data": "1999" },
-            { "data": "2000"},
-            { "data": "2001" },
-            { "data": "2002" },
-            { "data": "2003" },
-            { "data": "2004"},
-            { "data": "2005"},
-            { "data": "2006" },
-            { "data": "2007" },
-            { "data": "2008" },
-            { "data": "2009"},
-            { "data": "2010"},
-            { "data": "2011" },
-            { "data": "2012"},
-            { "data": "Total"}
-        ]       
-    } );   
-};
-
-
-</script>
 
 </body>
 
