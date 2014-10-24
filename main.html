@@ -14,16 +14,17 @@
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <!--table-->
     <script src="http://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
-    <link src="tablestyle.css">
-    <script src="http://cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-    <link src="http://cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.css"></link>
+    <link href="css/tablestyle.css" rel="stylesheet">
+    <!--link href="http://cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css"-->
+    <script src="http://cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.js"></script>
+    <link href="http://cdn.datatables.net/responsive/1.0.2/css/dataTables.responsive.css">
 <!-- cartobd-->
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css"/>
     <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
 <!-- my CSS -->
     <link href="css/theme.css" rel="stylesheet">
 <!-- my JS-->
-    <script src="my.js"></script>
+    <script src="js/my.js"></script>
     
 
 </head>
@@ -36,13 +37,18 @@
     </div>
     <div class="col-md-8">
         <h3>NC Bike Accidents 1997-2012</h3>
-        <div id="highchart1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-        <p class="source">Source: data.gov</p>
+        <div>
+        <span class="mapIntro">Use the buttons on the right to toggle the chart.</span>
+        <button class="tab fatal" onclick="makeChart2()">Percent Fatal</button>
+        <button  class="tab total" onclick="makeChart1()">Total Accidents</button>
+        </div>
+        <div id="highchart1" style="min-width: 310px; height: 400px; margin: 0 auto; z-index: 0;"></div>
+        <div class="chartSource"><p class="source">Source: <a href="http://www.ncdot.gov/bikeped/researchreports/default.html">NCDOT</a></p></div>
     </div>
     <div class="col-md-4">
         <h3>Timeline of Legislation</h3>
         <ul id="timeline"></ul>
-        <p class="source">Source: NCDOT </p>
+        <p class="source">Source: <a href="http://www.ncdot.gov/bikeped/lawspolicies/">NCDOT</a> </p>
     </div>
     <div class="col-md-12">
         <div class="row">
@@ -55,10 +61,16 @@
             </span>
         </div>
         <div id="map" style="height: 400px; width: 100%"></div>
-        <p class="source">Source: NC ONE Map and data.gov</p>
+        <p class="source">Source: <a href="https://catalog.data.gov/dataset/trails-bike-ncdot-bike-routes-the-bike-routes-shapefile-contains-lines-representing-north-carolff279">data.gov</a> and <a href="http://www.ncdot.gov/bikeped/researchreports/default.html">NCDOT</a></p>
     </div>
-    <div class="col-md-12" id=hideTable>
+    
+    <div class="col-md-12">
+        <div class="hidden-xs">
         <h3>Crash Data by City, 1997-2012</h3>
+        <div class="visible-sm visible-md">
+            <p>To view the full extent of the data (1997-2012), click on the city name.</p>
+        </div>
+        
         <table id="dataTable" class="display" cellspacing="0" width="100%">
             <thead>
             <tr>
@@ -107,6 +119,10 @@
             </tr>
         </tfoot>
         </table>
+        </div>
+        <div>
+            <p id="moreInfo">For more bike crash data, or to search for data by city, check out NCDOT's <a href="http://www.pedbikeinfo.org/pbcat_nc/_bicycle.cfm">Crash Data Tool</a>.</p>
+        </div>
     </div>
 </div>
 

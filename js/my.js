@@ -19,7 +19,7 @@ var links = []
 function getHistory(){  
     $.ajax({
             type:"GET",
-            url:"timeline.json",
+            url:"js/timeline.json",
             dataType:"text",
             success: parseHistory
     });
@@ -131,7 +131,7 @@ var total =[]
 function loadData(){  
     $.ajax({
             type:"GET",
-            url:"crashseverity.json",
+            url:"js/crashseverity.json",
             dataType:"text",
             success: parseData
     });
@@ -152,7 +152,7 @@ function parseData(data){
 
 function makeChart1(){
     Highcharts.setOptions({
-        colors: ['#BD0026','#F03B20'],
+        colors: ['#FECC5C','rgba(189,0,38,1)'],  
         chart: {
             style: {
                 fontFamily: 'OpenSans',
@@ -202,14 +202,103 @@ function makeChart1(){
                     lineWidth: 1,
                     lineColor: '#666666'
                 }
+            },
+            series: {
+                marker: {
+                    enabled: false
+                }
             }
         },
         series: [{
-            name: 'Fatal',
-            data: fatal
-        }, {
             name: 'Non-fatal',
-            data: nonfatal
+            data: nonfatal,
+            marker: {
+                symbol: 'triangle',
+                radius: 0
+            }
+        }, {
+            name: 'Fatal',
+            data: fatal,
+            marker: {
+                symbol: 'triangle',
+                radius: 0
+            }
+        }]
+    });
+};
+
+function makeChart2(){
+    Highcharts.setOptions({
+        colors: ['#FECC5C','rgba(189,0,38,1)'],  
+        chart: {
+            style: {
+                fontFamily: 'OpenSans',
+            }
+        }
+    });
+    $('#highchart1').highcharts({
+        chart: {
+            type: 'area'
+        },
+        title: false, 
+            //text: 'NC Bike Accidents 1997-2012'
+        //},
+        //subtitle: {
+            //text: 'Source: data.gov'
+        //},
+        xAxis: {
+            categories: years,
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Percent'
+            },
+            labels: {
+
+            }
+        },
+        tooltip: {
+            crosshairs: true,
+            headerFormat: '<span style="font-size:12px"><b>{point.key}</b></span></br><table>',
+            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f})<br/>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'percent',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            },
+            series: {
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+        series: [{
+            name: 'Non-fatal',
+            data: nonfatal,
+            marker: {
+                symbol: 'triangle',
+                radius: 0
+            }
+        }, {
+            name: 'Fatal',
+            data: fatal,
+            marker: {
+                symbol: 'triangle',
+                radius: 0
+            }
         }]
     });
 };
@@ -219,7 +308,8 @@ var dataSet =[]
 
 function makeTable(dataSet) {   
     $('#dataTable').dataTable( {
-        "ajax": "crashcity(1).json",
+        responsive: true,
+        "ajax": "js/crashcity(1).json",
         "columns": [
             { "data": "City" },
             { "data": "1997" },

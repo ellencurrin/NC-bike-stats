@@ -1,6 +1,11 @@
 
 
 #container {margin: 0 8% 0 8%}
+#moreInfo {
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
 
 @font-face{ 
 	font-family: 'OpenSans';
@@ -35,12 +40,17 @@ button {border-width: 1px; border-color: #666;}
   float: right;
   padding: 5px 10px 5px 10px;
   margin-top: 5px;
-  background-color: #F03B20;
-  color: white;
+  background-color: white;
 }
 .tab:visited {background-color: #FECC5C;}
-.total {background-color: #F03B20;}
-.fatal {background-color: #BD0026;}
+.total {background-color: #FECC5C; color: white;}
+.fatal {background-color: #BD0026; color: white;}
+
+.chartSource {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
 
 ul {list-style: none;}
 .timeline {
@@ -68,7 +78,7 @@ ul {list-style: none;}
   }
 }
 
-th {font-family: 'OpenSans-Bold'; font-weight: bold; padding: 2px;}
-td {padding-left: 10px;}
-tr:hover {background-color: #DEE0DF;}
-}
+th {font-family: 'OpenSans'; font-weight: bold; border-bottom: 1px solid black; border-top: 1px solid black; padding: 0px; margin: 2px;}
+td {padding-left: 3px;}
+
+
