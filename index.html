@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>NC Bike Safety</title>
+
+<!-- Bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- jQuery library (served from Google) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<!--highcharts-->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+<!--table-->
+    <script src="http://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+    <link href="css/tablestyle.css" rel="stylesheet">
+    <!--link href="http://cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css"-->
+    <script src="http://cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.js"></script>
+    <link href="http://cdn.datatables.net/responsive/1.0.2/css/dataTables.responsive.css">
+<!-- cartobd-->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css"/>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+<!-- my CSS -->
+    <link href="css/theme.css" rel="stylesheet">
+<!-- my JS-->
+    <script src="js/my.js"></script>
+    
+
+</head>
+
+<body>
+    
+<div id="container">
+    <div class="col-md-12">
+        <h1>Bike Safety in North Carolina</h1>
+    </div>
+    <div class="col-md-8">
+        <h3>NC Bike Accidents 1997-2012</h3>
+        <div>
+        <span class="mapIntro">Use the buttons on the right to toggle the chart.</span>
+        <button class="tab fatal" onclick="makeChart2()">Percent Fatal</button>
+        <button  class="tab total" onclick="makeChart1()">Total Accidents</button>
+        </div>
+        <div id="highchart1" style="min-width: 310px; height: 400px; margin: 0 auto; z-index: 0;"></div>
+        <div class="chartSource"><p class="source">Source: <a href="http://www.ncdot.gov/bikeped/researchreports/default.html">NCDOT</a></p></div>
+    </div>
+    <div class="col-md-4">
+        <h3>Timeline of Legislation</h3>
+        <ul id="timeline"></ul>
+        <p class="source">Source: <a href="http://www.ncdot.gov/bikeped/lawspolicies/">NCDOT</a> </p>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <h3>Geography of Accidents and Fatalities, 1997-2012</h3>
+            <span class="col-md-8 mapIntro">This map displays the location of NC bike accidents (aggregated by municipality) between 1997 and 2012 in relation to the location of the state's designated bike routes. Use the "Visible Layers" button within the map to toggle the bikepath shapefile on and off to get a clearer view of the data. Use the red and orange tabs at the top to explore total accidents and fatal accidents. Is there any relation between the existance of bike routes and accidents? What about bike routes and fatatlities?</span>
+            <span class="col-md-4 noSpace">   </span>
+            <span class="col-md-12 noSpace">    
+                    <button class="tab fatal" onclick="map2()">Percent Fatalities</button>
+                    <button class="tab total" onclick="map1()">Total accidents</button>
+            </span>
+        </div>
+        <div id="map" style="height: 400px; width: 100%"></div>
+        <p class="source">Source: <a href="https://catalog.data.gov/dataset/trails-bike-ncdot-bike-routes-the-bike-routes-shapefile-contains-lines-representing-north-carolff279">data.gov</a> and <a href="http://www.ncdot.gov/bikeped/researchreports/default.html">NCDOT</a></p>
+    </div>
+    
+    <div class="col-md-12">
+        <div class="hidden-xs">
+        <h3>Crash Data by City, 1997-2012</h3>
+        <div class="visible-sm visible-md">
+            <p>To view the full extent of the data (1997-2012), click on the city name.</p>
+        </div>
+        
+        <table id="dataTable" class="display" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th></th>
+                <th>1997</th>
+                <th>1998</th>
+                <th>1999</th>
+                <th>2000</th>
+                <th>2001</th>
+                <th>2002</th>
+                <th>2003</th>
+                <th>2004</th>
+                <th>2005</th>
+                <th>2006</th>
+                <th>2007</th>
+                <th>2008</th>
+                <th>2009</th>
+                <th>2010</th>
+                <th>2011</th>
+                <th>2012</th>
+                <th>Total</th>
+
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th></th>
+                <th>1997</th>
+                <th>1998</th>
+                <th>1999</th>
+                <th>2000</th>
+                <th>2001</th>
+                <th>2002</th>
+                <th>2003</th>
+                <th>2004</th>
+                <th>2005</th>
+                <th>2006</th>
+                <th>2007</th>
+                <th>2008</th>
+                <th>2009</th>
+                <th>2010</th>
+                <th>2011</th>
+                <th>2012</th>
+                <th>Total</th>
+            </tr>
+        </tfoot>
+        </table>
+        </div>
+        <div>
+            <p id="moreInfo">For more bike crash data, or to search for data by city, check out NCDOT's <a href="http://www.pedbikeinfo.org/pbcat_nc/_bicycle.cfm">Crash Data Tool</a>.</p>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+
+</html>
